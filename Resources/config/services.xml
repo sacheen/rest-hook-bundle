@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <parameter key="sd_rest_hook.listener.class">SD\RestHookBundle\EventListener\KernelRestListener</parameter>
+        <parameter key="sd_rest_hook.formats" />
+        <parameter key="sd_rest_hook.route_patterns"/>
+        <parameter key="sd_rest_hook.json_callback"/>
+    </parameters>
+
+    <services>
+
+        <service id="sd_rest_hook.response_listener" class="%sd_rest_hook.listener.class%">
+            <tag name="kernel.event_listener" event="kernel.view" method="onKernelView" />
+            <argument type="service" id="serializer" />
+            <argument>%sd_rest_hook.formats%</argument>
+            <argument>%sd_rest_hook.route_patterns%</argument>
+            <argument>%sd_rest_hook.json_callback%</argument>
+        </service>
+
+        <service id="sd_rest_hook.exception_listener" class="%sd_rest_hook.listener.class%">
+            <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" />
+            <argument type="service" id="serializer" />
+            <argument>%sd_rest_hook.formats%</argument>
+            <argument>%sd_rest_hook.route_patterns%</argument>
+            <argument>%sd_rest_hook.json_callback%</argument>
+        </service>
+
+    </services>
+
+</container>
