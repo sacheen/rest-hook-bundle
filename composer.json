@@ -1,9 +1,9 @@
 {
-    "name": "sacheen/RestHookBundle",
+    "name": "sacheen/rest-hook-bundle",
     "type": "symfony-bundle",
     "description": "Symfony2 Bundle to easily convert any controller to a restful endpoint",
     "keywords": ["Symfony", "bundle","Rest","Endpoint"],
-    "homepage": "https://github.com/sacheen/RestHookBundle",
+    "homepage": "https://github.com/sacheen/rest-hook-bundle",
     "license": "MIT",
     "authors": [
         {
