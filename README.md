@@ -8,9 +8,6 @@ The purpose of this bundle is to allow re-use of controllers, and simplify creat
 Simple Example
 --------------
 
-
-.. code-block :: php
-
     <?php
 
     class DefaultController extends Controller
@@ -40,11 +37,9 @@ This route will output json by default, with no template required
 Installation
 ------------
 
-.. code-block :: bash
-
     composer require "sacheen/rest-hook-bundle dev-master"
 
-.. code-block :: php
+
 
    <?php
 
@@ -59,9 +54,6 @@ Installation
 Config
 ------
 
-.. configuration-block ::
-
-    .. code-block :: yaml
     #app/config.yml
     sd_rest_hook:
         formats: [json,xml]
@@ -78,7 +70,6 @@ JMSSerializerBundle
 
 The Config allows for *formats* allowed by [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle)
 You can learn more about the bundle in its [documentation](http://jmsyst.com/bundles/JMSSerializerBundle).
-
 
 
 Final
