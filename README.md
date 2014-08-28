@@ -42,7 +42,6 @@ Installation
 
 
    <?php
-
     // in AppKernel::registerBundles()
     $bundles = array(
         // ...
