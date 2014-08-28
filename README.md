@@ -39,9 +39,7 @@ Installation
 
     composer require "sacheen/rest-hook-bundle dev-master"
 
-
-
-   <?php
+    <?php
     // in AppKernel::registerBundles()
     $bundles = array(
         // ...
