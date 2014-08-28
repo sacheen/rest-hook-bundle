@@ -8,22 +8,20 @@
 namespace SD\RestHookBundle\EventListener;
 
 use SD\RestHookBundle\Util\ExceptionFormatter;
-use Symfony\Bundle\TwigBundle\Extension\CodeExtension;
-use JMS\SerializerBundle\Serializer\Serializer;
 
+use JMS\SerializerBundle\Serializer\Serializer;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
-use Symfony\Component\HttpKernel\Event\KernelEvent;
 
 
-use SD\KernelHookBundle\Util\Codes;
+use SD\RestHookBundle\Util\Codes;
 
 class KernelRestListener
 {
 
 
-    protected $serializer;
+    public $serializer;
 
     private $formats;
 
