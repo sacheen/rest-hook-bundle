@@ -10,6 +10,7 @@ namespace SD\RestHookBundle\EventListener;
 use SD\RestHookBundle\Util\ExceptionFormatter;
 
 use JMS\SerializerBundle\Serializer\Serializer;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -52,6 +53,26 @@ class KernelRestListener
         return false;
     }
 
+
+    /**
+     * Test to see if this is a json request
+     * and convert the JSON into http parameters for the controller to understand
+     * @param GetResponseEvent $event
+     */
+    public function onKernelRequest(GetResponseEvent $event)
+    {
+        if ($event->isMasterRequest()) {
+            $request = $event->getRequest();
+            error_log($request->getContent());
+            error_log($request->getContentType());
+            if ($request->getContentType() == 'json') {
+                $content = $request->getContent();
+                $request->request->replace(json_decode($content, true));
+            }
+
+        }
+    }
+
     /**
      * Handles the response of a controller that meets the configurations specifications
      * It will only action if the pattern and format requirement is met
@@ -67,8 +88,8 @@ class KernelRestListener
 
             $responseData = $this->serializer->serialize($event->getControllerResult(), $event->getRequest()->getRequestFormat());
             $response = new Response();
-            if (! is_null($this->jsonCallback) && $event->getRequest()->get($this->jsonCallback) && $event->getRequest()->getRequestFormat() == 'json') {
-                $responseData = $event->getRequest()->get($this->jsonCallback).'('.$responseData.')';
+            if (!is_null($this->jsonCallback) && $event->getRequest()->get($this->jsonCallback) && $event->getRequest()->getRequestFormat() == 'json') {
+                $responseData = $event->getRequest()->get($this->jsonCallback) . '(' . $responseData . ')';
             }
             $response->setContent($responseData);
             $event->setResponse($response);
@@ -103,8 +124,8 @@ class KernelRestListener
             /* @var $serializer Serializer */
             $responseData = $this->serializer->serialize($exceptionFormatter, $event->getRequest()->getRequestFormat());
 
-            if (! is_null($this->jsonCallback) && $event->getRequest()->get($this->jsonCallback) && $event->getRequest()->getRequestFormat() == 'json') {
-                $responseData = $event->getRequest()->get($this->jsonCallback).'('.$responseData.')';
+            if (!is_null($this->jsonCallback) && $event->getRequest()->get($this->jsonCallback) && $event->getRequest()->getRequestFormat() == 'json') {
+                $responseData = $event->getRequest()->get($this->jsonCallback) . '(' . $responseData . ')';
             }
 
             $response = new Response();
