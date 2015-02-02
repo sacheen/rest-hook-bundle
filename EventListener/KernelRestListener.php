@@ -63,11 +63,10 @@ class KernelRestListener
     {
         if ($event->isMasterRequest()) {
             $request = $event->getRequest();
-            error_log($request->getContent());
-            error_log($request->getContentType());
             if ($request->getContentType() == 'json') {
-                $content = $request->getContent();
-                $request->request->replace(json_decode($content, true));
+                if (strlen($request->getContent()) > 0) {
+                    $request->request->replace(json_decode($request->getContent(), true));
+                }
             }
 
         }
