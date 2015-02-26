@@ -62,7 +62,7 @@ class KernelRestListener
      */
     public function onKernelRequest(GetResponseEvent $event)
     {
-        if ($event->isMasterRequest() && in_array($event->getRequest()->getRequestFormat(), $this->formats) && $this->isValidPattern($event->getRequest()->getRequestUri())) {
+        if ($event->isMasterRequest() && in_array($event->getRequest()->getContentType(), $this->formats) && $this->isValidPattern($event->getRequest()->getRequestUri())) {
             $request = $event->getRequest();
             if ($request->getContentType() == 'json') {
                 if (strlen($request->getContent()) > 0) {
