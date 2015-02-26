@@ -24,6 +24,7 @@ class Configuration implements ConfigurationInterface
             ->arrayNode('formats')->requiresAtLeastOneElement()->prototype('scalar')->end()->end()
             ->arrayNode('route_patterns')->prototype('scalar')->end()->end()
             ->scalarNode('json_callback')->defaultNull()->end()
+            ->scalarNode('request_listener_priority')->defaultValue(100)->end()
             ->end();
 
         // Here you should define the parameters that are allowed to

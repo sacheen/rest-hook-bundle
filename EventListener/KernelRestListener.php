@@ -10,6 +10,7 @@ namespace SD\RestHookBundle\EventListener;
 use SD\RestHookBundle\Util\ExceptionFormatter;
 
 use JMS\SerializerBundle\Serializer\Serializer;
+use SD\RestHookBundle\Util\RestfulException;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,7 +62,7 @@ class KernelRestListener
      */
     public function onKernelRequest(GetResponseEvent $event)
     {
-        if ($event->isMasterRequest()) {
+        if ($event->isMasterRequest() && in_array($event->getRequest()->getRequestFormat(), $this->formats) && $this->isValidPattern($event->getRequest()->getRequestUri())) {
             $request = $event->getRequest();
             if ($request->getContentType() == 'json') {
                 if (strlen($request->getContent()) > 0) {
@@ -118,7 +119,13 @@ class KernelRestListener
                 $code = $exception->getCode();
             }
 
-            $exceptionFormatter = new ExceptionFormatter($code, $exception->getMessage());
+            $data = array();
+
+            if ($exception instanceof RestfulException) {
+                $data = $exception->getData();
+            }
+
+            $exceptionFormatter = new ExceptionFormatter($code, $exception->getMessage(), $data);
 
             /* @var $serializer Serializer */
             $responseData = $this->serializer->serialize($exceptionFormatter, $event->getRequest()->getRequestFormat());

@@ -56,11 +56,14 @@ Config
         formats: [json,xml]
         route_patterns: [/api/i,/ajax/i]
         json_callback: json_callback
+        request_listener_priority: 100
 
 The *route_patterns* allow for an array of regular expression, if a route matches the pattern, the kernel will intercept the response,
 and render it as the relevant end point format
 
 The *json_callback* option allows to specify the string, for a json_callback
+
+The *request_listener_priority* sets the priority for the intercepting the request
 
 JMSSerializerBundle
 -------------------
@@ -68,6 +71,17 @@ JMSSerializerBundle
 The Config allows for *formats* allowed by [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle)
 You can learn more about the bundle in its [documentation](http://jmsyst.com/bundles/JMSSerializerBundle).
 
+
+Request Interceptor
+-------------------
+
+This feature allows the ability to send json data to the server, and it will convert the json to an http query string that your controller can
+understand
+
+Exceptions
+----------
+
+There is a RestfulException Class, this allows you to set a data [array] variable that will then translate in the content of the response
 
 Final
 -----

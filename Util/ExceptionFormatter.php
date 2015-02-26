@@ -26,14 +26,22 @@ class ExceptionFormatter
      */
     private $message;
 
-    public function __construct($code, $message)
+    /**
+     * @var string
+     * @Expose
+     */
+    private $data;
+
+
+    public function __construct($code, $message, $data = null)
     {
         $this->code = $code;
         $this->message = $message;
+        $this->data = $data;
     }
 
     /**
-     * @return the $code
+     * @return string $code
      */
     public function getCode()
     {
@@ -41,7 +49,7 @@ class ExceptionFormatter
     }
 
     /**
-     * @return the $message
+     * @return string $message
      */
     public function getMessage()
     {
@@ -49,7 +57,7 @@ class ExceptionFormatter
     }
 
     /**
-     * @param field_type $code
+     * @param string $code
      */
     public function setCode($code)
     {
@@ -57,11 +65,27 @@ class ExceptionFormatter
     }
 
     /**
-     * @param field_type $message
+     * @param string $message
      */
     public function setMessage($message)
     {
         $this->message = $message;
+    }
+
+    /**
+     * @param string $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @return string
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 
 }

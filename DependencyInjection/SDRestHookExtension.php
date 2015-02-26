@@ -28,5 +28,6 @@ class SDRestHookExtension extends Extension
         $container->setParameter('sd_rest_hook.formats', $config['formats']);
         $container->setParameter('sd_rest_hook.route_patterns', $config['route_patterns']);
         $container->setParameter('sd_rest_hook.json_callback', $config['json_callback']);
+        $container->setParameter('sd_rest_hook.request_listener_priority', $config['request_listener_priority']);
     }
 }
