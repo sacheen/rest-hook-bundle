@@ -52,6 +52,7 @@ Config
 ------
 
     #app/config.yml
+    
     sd_rest_hook:
         formats: [json,xml]
         route_patterns: [/api/i,/ajax/i]
@@ -91,8 +92,8 @@ All controllers must return an array(), to render correctly
 Examples
 --------
 
-        //sample routes for get/put/post/delete
-        * @Route("/api/user",name="_user_get_api",defaults={"_format"="json"},requirements={"_method"="GET"}))
-        * @Route("/api/user",name="_user_put_api",defaults={"_format"="json"},requirements={"_method"="PUT"}))
-        * @Route("/api/user",name="_user_post_api",defaults={"_format"="json"},requirements={"_method"="POST"}))
-        * @Route("/api/user",name="_user_delete_api",defaults={"_format"="json"},requirements={"_method"="DELETE"}))
+    //sample routes for get/put/post/delete
+    * @Route("/api/user",name="_user_get_api",defaults={"_format"="json"},requirements={"_method"="GET"}))
+    * @Route("/api/user",name="_user_put_api",defaults={"_format"="json"},requirements={"_method"="PUT"}))
+    * @Route("/api/user",name="_user_post_api",defaults={"_format"="json"},requirements={"_method"="POST"}))
+    * @Route("/api/user",name="_user_delete_api",defaults={"_format"="json"},requirements={"_method"="DELETE"}))
