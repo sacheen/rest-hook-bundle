@@ -16,7 +16,7 @@
 
         <service id="sd_rest_hook.response_listener" class="%sd_rest_hook.listener.class%">
             <tag name="kernel.event_listener" event="kernel.view" method="onKernelView" />
-            <argument type="service" id="serializer" />
+            <argument type="service" id="jms_serializer" />
             <argument>%sd_rest_hook.formats%</argument>
             <argument>%sd_rest_hook.route_patterns%</argument>
             <argument>%sd_rest_hook.json_callback%</argument>
@@ -24,7 +24,7 @@
 
         <service id="sd_rest_hook.request_listener" class="%sd_rest_hook.listener.class%">
             <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="%sd_rest_hook.request_listener_priority%"/>
-            <argument type="service" id="serializer" />
+            <argument type="service" id="jms_serializer" />
             <argument>%sd_rest_hook.formats%</argument>
             <argument>%sd_rest_hook.route_patterns%</argument>
             <argument>%sd_rest_hook.json_callback%</argument>
@@ -32,7 +32,7 @@
 
         <service id="sd_rest_hook.exception_listener" class="%sd_rest_hook.listener.class%">
             <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" />
-            <argument type="service" id="serializer" />
+            <argument type="service" id="jms_serializer" />
             <argument>%sd_rest_hook.formats%</argument>
             <argument>%sd_rest_hook.route_patterns%</argument>
             <argument>%sd_rest_hook.json_callback%</argument>
