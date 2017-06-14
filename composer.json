@@ -1,26 +1,32 @@
 {
-    "name": "sacheen/rest-hook-bundle",
-    "type": "symfony-bundle",
-    "description": "A Symfony2 & 3 Bundle, that can  easily convert any controller to a restful endpoint",
-    "keywords": ["Symfony", "bundle","Rest","Endpoint"],
-    "homepage": "https://github.com/sacheen/rest-hook-bundle",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Sacheen Dhanjie",
-            "email": "sacheend@funktion-it.co.za"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.2",
-        "symfony/framework-bundle": ">=2.1",
-        "jms/serializer-bundle": "*"
-    },
-    "require-dev": {        
-    },
-    "autoload": {
-        "psr-0": { "SD\\RestHookBundle": "" }
-    },
-    "minimum-stability": "dev",
-    "target-dir": "SD/RestHookBundle"
+  "name": "sacheen/rest-hook-bundle",
+  "type": "symfony-bundle",
+  "description": "A Symfony2 & 3 Bundle, that can  easily convert any controller to a restful endpoint",
+  "keywords": [
+    "Symfony",
+    "bundle",
+    "Rest",
+    "Endpoint"
+  ],
+  "homepage": "https://github.com/sacheen/rest-hook-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sacheen Dhanjie",
+      "email": "sacheend@funktion-it.co.za"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2",
+    "symfony/framework-bundle": ">=2.1",
+    "jms/serializer-bundle": "2.0.0"
+  },
+  "require-dev": {},
+  "autoload": {
+    "psr-0": {
+      "SD\\RestHookBundle": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "target-dir": "SD/RestHookBundle"
 }
