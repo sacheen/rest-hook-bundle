@@ -40,7 +40,7 @@ Installation
     composer require "sacheen/rest-hook-bundle dev-master"
 
     <?php
-    // in AppKernel::registerBundles()
+    #AppKernel::registerBundles()
     $bundles = array(
         // ...
             new SD\RestHookBundle\SDRestHookBundle(),
@@ -60,7 +60,7 @@ Config
 
 The *route_patterns* allow for an array of regular expression, if a route matches the pattern, the kernel will intercept the response, and render it as the relevant end point format.
 
-The *json_callback* option allows to specify the string, for a json_callback
+The *json_callback* option allows to specify the string, for a json_callback.
 
 The *request_listener_priority* sets the priority for the intercepting the request.
 
